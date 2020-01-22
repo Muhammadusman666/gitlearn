@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Simplecalculator</string>
+    <string name="text"> Welcome to our simple calculator best of luck </string>
+    <string name="text1">Your result is: </string>
+</resources>
