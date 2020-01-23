@@ -11,9 +11,11 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity  implements View.OnClickListener {
     Button btnadd , btnsubtract , btnmultiply , btndivide , btndot ,
             btnone , btntwo, btnthree, btnfour, btnfive, btnsix, btnseven, btneight, btnnine, btnequal
-            ,btnzero;
-    TextView tv,tvresult;
+            ,btnzero,btnclr;
+    TextView tv;
     EditText ed;
+    float result1,result2;
+    boolean add,subtract,multiply,divide;
 
     float number,result;
 
@@ -31,6 +33,7 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
 
         btndot=(Button)findViewById(R.id.btndot);
         btnequal=(Button)findViewById(R.id.btnequal);
+        btnclr=(Button)findViewById(R.id.btnclr);
 
         btnzero=(Button)findViewById(R.id.btnzero);
         btnone=(Button)findViewById(R.id.btnone);
@@ -43,7 +46,7 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
         btneight=(Button)findViewById(R.id.btneight);
         btnnine=(Button)findViewById(R.id.btnnine);
 
-
+        btnclr.setOnClickListener(this);
         btnequal.setOnClickListener(this);
         btndot.setOnClickListener(this);
         btnadd.setOnClickListener(this);
@@ -69,64 +72,117 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
         switch (v.getId()) {
 
             case R.id.btnzero:
-                ed.setText("0");
+                ed.setText(ed.getText()+"0");
                  break;
 
             case R.id.btnone:
-                ed.setText("1");
+                ed.setText(ed.getText()+"1");
                 break;
 
             case R.id.btntwo:
-                ed.setText("2");
+                ed.setText(ed.getText()+"2");
                 break;
 
             case R.id.btnthree:
-                ed.setText("3");
+                ed.setText(ed.getText()+"3");
                 break;
 
             case R.id.btnfour:
-                ed.setText("4");
+                ed.setText(ed.getText()+"4");
                 break;
 
             case R.id.btnfive:
-                ed.setText("5");
+                ed.setText(ed.getText()+"5");
                 break;
 
             case R.id.btnsix:
-                ed.setText("6");
+                ed.setText(ed.getText()+"6");
                 break;
 
             case R.id.btnseven:
-                ed.setText("7");
+                ed.setText(ed.getText()+"7");
                 break;
 
             case R.id.btneight:
-                ed.setText("8");
+                ed.setText(ed.getText()+"8");
                 break;
 
             case R.id.btnnine:
-                ed.setText("9");
-                break;
-
-            case R.id.btnadd:
-                ed.setText("+");
-                break;
-
-            case R.id.btnsubtract:
-                ed.setText("-");
-                break;
-
-            case R.id.btnmultiply:
-                ed.setText("*");
-                break;
-
-            case R.id.btndivide:
-                ed.setText("/");
+                ed.setText(ed.getText()+"9");
                 break;
 
             case R.id.btndot:
-                ed.setText(".");
+                ed.setText(ed.getText()+".");
                 break;
+
+
+            case R.id.btnadd:
+                if(ed==null) {
+                    ed.setText("");
+                }
+                else{
+                    result1=(Float.parseFloat(ed.getText()+""));
+                    add=true;
+                    ed.setText("");
+                }
+                break;
+
+            case R.id.btnsubtract:
+                if(ed==null) {
+                    ed.setText("");
+                }
+                else {
+                    result1 = (Float.parseFloat(ed.getText() + ""));
+                    subtract = true;
+                    ed.setText("");
+                }
+                break;
+
+            case R.id.btnmultiply:
+                if(ed==null) {
+                    ed.setText("");
+                }
+                else {
+                    result1 = (Float.parseFloat(ed.getText() + ""));
+                    multiply = true;
+                    ed.setText("");
+                }
+                break;
+
+            case R.id.btndivide:
+                if(ed==null) {
+                    ed.setText("");
+                }
+                else {
+                    result1 = (Float.parseFloat(ed.getText() +""));
+                    divide = true;
+                    ed.setText("");
+                }
+                break;
+
+            case R.id.btnequal:
+
+                 result2=(Float.parseFloat(ed.getText()+""));
+                 if(add==true){
+                     ed.setText(result1+result2+"");
+                     add=false;
+                 }
+                if(subtract==true){
+                    ed.setText(result1+result2+"");
+                    subtract=false;
+                }
+
+                if(multiply==true){
+                    ed.setText(result1+result2+"");
+                    multiply=false;
+                }
+                if(divide==true){
+                    ed.setText(result1+result2+"");
+                    divide=false;
+                }
+                break;
+            case R.id.btnclr:
+                ed.setText("");
         }
     }
 }

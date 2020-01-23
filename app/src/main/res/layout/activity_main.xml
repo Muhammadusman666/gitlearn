@@ -170,4 +170,12 @@
         android:layout_marginLeft="310dp"
         android:text="/"/>
 
+    <Button
+        android:id="@+id/btnclr"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="clear"
+        android:layout_marginTop="320dp"
+        android:textColor="#f12"/>
+
 </RelativeLayout>
